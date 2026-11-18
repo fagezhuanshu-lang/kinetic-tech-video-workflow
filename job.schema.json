@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Kinetic Tech complete video job",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "user_input", "music", "cover"],
+  "properties": {
+    "version": {"const": 1},
+    "user_input": {"type": "string", "minLength": 1},
+    "music": {
+      "type": "object", "additionalProperties": false, "required": ["file"],
+      "properties": {
+        "file": {"type": "string", "minLength": 1},
+        "start": {"type": "number", "minimum": 0, "default": 0},
+        "name": {"type": "string", "minLength": 1},
+        "source": {"type": "string", "minLength": 1},
+        "license": {"type": "string", "minLength": 1}
+      }
+    },
+    "cover": {
+      "type": "object", "additionalProperties": false, "required": ["title"],
+      "properties": {
+        "title": {"type": "string", "minLength": 1, "maxLength": 80},
+        "label": {"type": "string", "maxLength": 80},
+        "subtitle": {"type": "string", "maxLength": 200},
+        "footer": {"type": "string", "maxLength": 120},
+        "frame": {"type": "string", "minLength": 1},
+        "instance_frame": {"type": "string", "minLength": 1},
+        "frame_time": {"type": "number", "minimum": 0}
+      },
+      "oneOf": [
+        {"required": ["frame"], "not": {"anyOf": [{"required": ["instance_frame"]}, {"required": ["frame_time"]}]}},
+        {"required": ["instance_frame"], "not": {"anyOf": [{"required": ["frame"]}, {"required": ["frame_time"]}]}},
+        {"required": ["frame_time"], "not": {"anyOf": [{"required": ["frame"]}, {"required": ["instance_frame"]}]}}
+      ]
+    },
+    "mix": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "voice_lufs": {"type": "number", "minimum": -36, "maximum": -6},
+        "music_lufs": {"type": "number", "minimum": -48, "maximum": -10},
+        "duck_db": {"type": "number", "minimum": 0, "maximum": 30},
+        "fade_in": {"type": "number", "minimum": 0},
+        "fade_out": {"type": "number", "minimum": 0}
+      }
+    },
+    "preview_time": {"type": "number", "minimum": 0}
+  }
+}

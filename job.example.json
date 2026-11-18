@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "user_input": "user.json",
+  "music": {
+    "file": "media/selected-music.wav",
+    "start": 0,
+    "source": "User-supplied music; replace with the actual source record"
+  },
+  "cover": {
+    "title": "把想法变成作品",
+    "label": "创作流程",
+    "subtitle": "从清楚的表达\n到完整的交付",
+    "footer": "内容 · 画面 · 声音",
+    "frame_time": 3
+  },
+  "mix": {
+    "voice_lufs": -16,
+    "music_lufs": -22,
+    "duck_db": 7,
+    "fade_in": 1.2,
+    "fade_out": 2
+  }
+}

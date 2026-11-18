@@ -1,0 +1,4 @@
+interface:
+  display_name: "酷炫科技风完整视频工作流"
+  short_description: "通过固定脚本制作包含配乐、字幕、音效和人物封面的完整科技风视频"
+  default_prompt: "使用 $kinetic-tech-video-workflow 先检查环境并运行短样例，再制作包含 BGM、封面和验收记录的视频。"
